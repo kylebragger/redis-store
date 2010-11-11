@@ -46,7 +46,9 @@ module RedisStore
           def set_session(env, sid, session_data)
             options = env['rack.session.options']
             @pool.set(sid, session_data, options)
-            return true
+            #return true
+            # fix
+            return sid
           rescue Errno::ECONNREFUSED
             return false
           end
